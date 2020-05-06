@@ -1,0 +1,78 @@
+@import "./styles/variables";
+@import "./styles/resets";
+
+@mixin flexbox($jus, $align, $direc) {
+  display: flex;
+  justify-content: $jus;
+  align-items: $align;
+  flex-direction: $direc;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 1rem 0;
+  @include flexbox(flex-start, center, column);
+  background-color: map-get($color, "background-secondary");
+  h1 {
+    width: 85%;
+    text-align: center;
+    color: map-get($color, "font-header");
+    background: map-get($color, "header");
+    padding: 2rem;
+    font-weight: 500;
+    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+  }
+  h3 {
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.prod-container {
+  padding: 1rem 1rem;
+  width: 85%;
+  background: white;
+  @include flexbox(flex-start, center, column);
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+
+  .prod-tipo {
+    width: 100%;
+    @include flexbox(space-evenly, center, row);
+    padding: 0.8rem 0;
+  }
+  .prod {
+    width: 100%;
+    font-size: 0.9rem;
+    @include flexbox(space-around, flex-start, row);
+    margin: 0.2rem 0;
+    padding: 0.5rem 0;
+    border: 1px solid map-get($color, "background-secondary");
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: $border-radius;
+  }
+  .prod-list {
+    width: 100%;
+    height: 100%;
+    @include flexbox(flex-start, center, column);
+  }
+}
+
+.action {
+  @include flexbox(space-evenly, center, row);
+}
+.add-prod-input {
+  height: 100%;
+  width: 20%;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.nombre-prod {
+  // width: 30%;
+}
+.prod-item {
+  width: 100%;
+  text-align: center;
+}
