@@ -59,22 +59,16 @@ const App = () => {
           <h3>Precio</h3>
           <h3>Acción</h3>
         </div>
-        <div className="produ">
-          {editing ? (
-            <div>
-              <EditProdForm
-                setEditing={setEditing}
-                currentProd={currentProd}
-                updateProd={updateProd}
-              />
-            </div>
-          ) : (
-            <div>
-              <AddProdForm addProd={addProd} />
-            </div>
-          )}
-          <ProdList prods={prods} editRow={editRow} deleteProd={deleteProd} />
-        </div>
+        {editing ? (
+          <EditProdForm
+            setEditing={setEditing}
+            currentProd={currentProd}
+            updateProd={updateProd}
+          />
+        ) : (
+          <AddProdForm addProd={addProd} />
+        )}
+        <ProdList prods={prods} editRow={editRow} deleteProd={deleteProd} />
       </div>
     </div>
   );

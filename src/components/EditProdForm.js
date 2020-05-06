@@ -19,7 +19,7 @@ const EditProdForm = (props) => {
 
         props.updateProd(prod.id, prod);
       }}
-      className="produ"
+      className="prod"
     >
       <input
         className="edit-prod-input"
@@ -45,13 +45,12 @@ const EditProdForm = (props) => {
         placeholder="Precio..."
         onChange={handleInputChange}
       />
-      <button>Editar</button>
-      <button
-        onClick={() => props.setEditing(false)}
-        className="edit-prod-input btn add button muted-button"
-      >
-        Cancel
-      </button>
+      <div className="prod-item action">
+        <button className="btn">+</button>
+        <button onClick={() => props.setEditing(false)} className="btn">
+          x
+        </button>
+      </div>
     </form>
   );
 };

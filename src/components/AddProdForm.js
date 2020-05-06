@@ -27,6 +27,8 @@ const AddProdForm = (props) => {
 
         // Vaciamos el form
         setProd(initialFormState);
+
+        //// No hay que preocuparse por async calls
       }}
       className="prod"
     >
@@ -54,7 +56,9 @@ const AddProdForm = (props) => {
         placeholder="Precio..."
         onChange={handleInputChange}
       />
-      <button className="add-prod-input btn add">+</button>
+      <div className="add-prod-input add-prod">
+        <button className="add-btn">+</button>
+      </div>
     </form>
   );
 };

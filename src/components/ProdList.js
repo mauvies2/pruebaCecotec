@@ -7,7 +7,7 @@ const ProdList = (props) => (
 
     {props.prods.length > 0 ? (
       props.prods.map((prod) => (
-        <div className="prod">
+        <div key={prod.id} className="prod">
           <div className="prod-item id">{prod.id}</div>
           <div className="prod-item nombre-prod">{prod.name}</div>
           <div className="prod-item precio">{prod.price}</div>
@@ -16,15 +16,12 @@ const ProdList = (props) => (
               onClick={() => {
                 props.editRow(prod);
               }}
-              className="button muted-button"
+              className="btn"
             >
-              Edit
+              +
             </button>
-            <button
-              onClick={() => props.deleteProd(prod.id)}
-              className="button muted-button"
-            >
-              Del
+            <button onClick={() => props.deleteProd(prod.id)} className="btn">
+              x
             </button>
           </div>
         </div>
