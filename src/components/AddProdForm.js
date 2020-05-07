@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 const AddProdForm = (props) => {
   //
@@ -32,33 +34,39 @@ const AddProdForm = (props) => {
       }}
       className="prod"
     >
-      <input
-        className="add-prod-input"
-        type="text"
-        name="id"
-        value={prod.id}
-        placeholder="Id..."
-        onChange={handleInputChange}
-      />
-      <input
-        className="add-prod-input"
-        type="text"
-        name="name"
-        value={prod.name}
-        placeholder="Prod..."
-        onChange={handleInputChange}
-      />
-      <input
-        className="add-prod-input"
-        type="text"
-        name="price"
-        value={prod.price}
-        placeholder="Precio..."
-        onChange={handleInputChange}
-      />
-      <div className="add-prod-input add-prod">
-        <button className="add-btn">+</button>
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="id"
+          value={prod.id}
+          placeholder="Id..."
+          onChange={handleInputChange}
+        />
       </div>
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="name"
+          value={prod.name}
+          placeholder="Prod..."
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="price"
+          value={prod.price}
+          placeholder="Precio..."
+          onChange={handleInputChange}
+        />
+      </div>
+      <button className="add-prod">
+        <FontAwesomeIcon icon={faPlusSquare} className="btn-add" />
+      </button>
     </form>
   );
 };

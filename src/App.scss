@@ -9,83 +9,89 @@
   flex-direction: $direc;
 }
 
-.container {
+body {
   width: 100%;
-  height: 100vh;
+  background-color: map-get($color, "background-secondary");
+  @include flexbox(center, center, column);
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  color: map-get($color, "font-header");
+  background: map-get($color, "header");
+  padding: 2rem;
+  font-weight: 500;
+  box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.4);
+}
+
+.container {
+  max-width: 900px;
+  width: 80vw;
+  min-height: 100vh;
   padding: 1rem 0;
   @include flexbox(flex-start, center, column);
-  background-color: map-get($color, "background-secondary");
-  h1 {
-    width: 85%;
-    text-align: center;
-    color: map-get($color, "font-header");
-    background: map-get($color, "header");
-    padding: 2rem;
-    font-weight: 500;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
-  }
-  h3 {
-    font-weight: 400;
-    width: 100%;
-    text-align: center;
-  }
 }
 
 .prod-container {
   padding: 1rem 1rem;
-  height: 100%;
-  width: 85%;
-  background: white;
+  // height: 150%;
+  width: 100%;
   @include flexbox(flex-start, center, column);
-  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+  background: white;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
 }
 
 .prod-tipo {
   width: 100%;
-  @include flexbox(space-evenly, center, row);
   padding: 0.8rem 0;
+  @include flexbox(space-evenly, center, row);
 }
-.prod {
+
+h3 {
+  font-weight: 600;
   width: 100%;
-  font-size: 0.9rem;
-  @include flexbox(space-around, flex-start, row);
-  margin: 0.2rem 0;
-  padding: 0.5rem 0;
-  border: 1px solid map-get($color, "background-secondary");
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: $border-radius;
+  text-align: center;
 }
+
 .prod-list {
   width: 100%;
   height: 100%;
   @include flexbox(flex-start, center, column);
 }
 
-.action {
-  @include flexbox(space-evenly, center, row);
-}
-.add-prod-input {
+.prod {
+  width: 100%;
+  padding: 0.6rem 0;
   font-size: 0.9rem;
+  @include flexbox(space-around, center, row);
+  margin: 0.2rem 0;
+  border: 1px solid map-get($color, "background-secondary");
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: $border-radius;
+}
+.prod-item {
   height: 100%;
   width: 20%;
-  border: 1px solid #ccc;
   text-align: center;
-}
-
-.prod-item {
-  width: 100%;
-  text-align: center;
-}
-
-.edit-prod-input {
-  font-size: 0.9rem;
-  margin: 0 1.6rem;
-  height: 100%;
-  width: 80%;
-  border: 1px solid #ccc;
-  text-align: center;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .add-prod {
+  @include flexbox(center, center, row);
+  font-size: 0.9rem;
+  height: 100%;
+  width: 25%;
   border: none;
+  &.input {
+    width: 70%;
+    border: 1px solid #ccc;
+    height: 1.5rem;
+    text-align: center;
+  }
+}
+
+.action {
+  @include flexbox(space-evenly, center, row);
 }

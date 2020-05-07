@@ -6,4 +6,5 @@
 
 html {
   font-family: $font-fam;
+  color: map-get($map: $color, $key: dark);
 }

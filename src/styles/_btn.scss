@@ -1,7 +1,31 @@
-.add-btn {
-  width: 4rem;
+button {
+  background: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 }
 
-.btn {
-  width: 2rem;
+.btn-add {
+  color: #11b311;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.btn-del {
+  color: #8f1616;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  color: #8f1616;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.btn-edit {
+  // color: white;
+  color: map-get($map: $color, $key: link);
+  font-size: 1.4rem;
+  cursor: pointer;
 }

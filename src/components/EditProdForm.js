@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 const EditProdForm = (props) => {
   const [prod, setProd] = useState(props.currentProd);
@@ -21,35 +24,45 @@ const EditProdForm = (props) => {
       }}
       className="prod"
     >
-      <input
-        className="edit-prod-input"
-        type="text"
-        name="id"
-        value={prod.id}
-        placeholder="Id..."
-        onChange={handleInputChange}
-      />
-      <input
-        className="edit-prod-input"
-        type="text"
-        name="name"
-        value={prod.name}
-        placeholder="Prod..."
-        onChange={handleInputChange}
-      />
-      <input
-        className="edit-prod-input"
-        type="text"
-        name="price"
-        value={prod.price}
-        placeholder="Precio..."
-        onChange={handleInputChange}
-      />
-      <div className="prod-item action">
-        <button className="btn">+</button>
-        <button onClick={() => props.setEditing(false)} className="btn">
-          x
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="id"
+          value={prod.id}
+          placeholder="Id..."
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="name"
+          value={prod.name}
+          placeholder="Prod..."
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="add-prod">
+        <input
+          className="add-prod input"
+          type="text"
+          name="price"
+          value={prod.price}
+          placeholder="Precio..."
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="add-prod action">
+        <button>
+          <FontAwesomeIcon icon={faPlusSquare} className="btn-add" />
         </button>
+        <FontAwesomeIcon
+          icon={faWindowClose}
+          className="btn-cancel"
+          onClick={() => props.setEditing(false)}
+        />
       </div>
     </form>
   );
