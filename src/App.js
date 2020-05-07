@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import ProdList from "./components/ProdList";
 import AddProdForm from "./components/AddProdForm";
 import EditProdForm from "./components/EditProdForm";
 
 const App = () => {
-  // Random data
-  const prodsData = [
-    { id: 1, name: "Tania", price: "299" },
-    { id: 2, name: "Craig", price: "100" },
-    { id: 3, name: "Ben", price: "150" },
-  ];
+  const [hasError, setErrors] = useState(false);
+  const [prods, setProds] = useState(false);
 
-  const [prods, setProds] = useState(prodsData);
+  useEffect(() =>
+    fetch("http://localhost:3004/product_list")
+      .then((res) => res.json())
+      .then((res) => this.setState({ prods: res }))
+      .catch(() => this.setState({ hasErrors: true }))
+  );
 
   // Agregamos el nuevo objeto (producto) a la array
   // de objetos previos

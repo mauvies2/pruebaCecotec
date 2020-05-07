@@ -1,0 +1,87 @@
+@import "./variables";
+
+@mixin flexbox($jus, $align, $direc) {
+  display: flex;
+  justify-content: $jus;
+  align-items: $align;
+  flex-direction: $direc;
+}
+
+a {
+  text-decoration: none;
+  color: map-get($color, "link");
+}
+
+.login {
+  height: 100vh;
+  @include flexbox(center, center, column);
+}
+
+.containerLog {
+  background: white;
+  @include flexbox(center, center, column);
+  width: 40vw;
+  min-width: 25rem;
+  border: 1px solid map-get($color, "main-color");
+  border-radius: $border-radius;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  width: 100%;
+  background-color: map-get($color, "background-secondary");
+  @include flexbox(center, center, column);
+  padding: 1rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.main {
+  @include flexbox(center, center, column);
+  width: 100%;
+}
+
+.data {
+  @include flexbox(center, center, column);
+  width: 100%;
+  padding: 1rem 0 0.5rem;
+}
+.btn-data {
+  @include flexbox(space-evenly, center, row);
+  width: 80%;
+  height: 2.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
+}
+
+.data input {
+  width: 80%;
+  height: 80%;
+  font-size: 1rem;
+  border: none;
+  padding: 0 0.3rem;
+}
+
+.icon {
+  color: black;
+  opacity: 0.4;
+}
+.btn-login {
+  @include flexbox(center, center, row);
+  width: 80%;
+  height: 2.5rem;
+  color: white;
+  background: map-get($color, "link");
+  border-radius: $border-radius;
+  cursor: pointer;
+}
+
+.remember-forgot {
+  width: 80%;
+  padding: 0.5rem 0 1.5rem;
+  @include flexbox(space-between, center, row);
+}
+
+.remember {
+  @include flexbox(center, center, row);
+}

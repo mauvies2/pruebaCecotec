@@ -1,6 +1,7 @@
 @import "./styles/variables";
 @import "./styles/resets";
 @import "./styles/btn";
+@import "./styles/login";
 
 @mixin flexbox($jus, $align, $direc) {
   display: flex;
@@ -11,7 +12,7 @@
 
 body {
   width: 100%;
-  background-color: map-get($color, "background-secondary");
+  // background-color: map-get($color, "background-secondary");
   @include flexbox(center, center, column);
 }
 
