@@ -3,17 +3,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery";
 
 const Login = () => {
-  // const [hasError, setErrors] = useState(false);
-  // const [users, setUser] = useState({});
+  const [hasError, setErrors] = useState(false);
+  const [users, setUsers] = useState([]);
 
-  // useEffect(() =>
-  //   fetch("http://localhost:3004/users")
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ users: res }))
-  //     .catch(() => this.setState({ hasErrors: true }))
-  // );
+  async function fetchData() {
+    const res = await fetch("http://localhost:3004/users");
+    res
+      .json()
+      .then((res) => setUsers(res))
+      .catch((err) => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const dataAuth = () => {
+    const user = document.getElementById("user").value;
+    const password = document.getElementById("password").value;
+    for (let user_password of users) {
+      if (user_password.user === user && user_password.password === password) {
+        localStorage.setItem("myData", true);
+        window.location.reload();
+      }
+    }
+  };
 
   return (
     <div className="login">
@@ -26,10 +43,11 @@ const Login = () => {
             <div className="btn-data">
               <FontAwesomeIcon icon={faUser} className="icon" />
               <input
+                id="user"
                 type="text"
                 className="user"
                 placeholder="Usuario o correo electrónico"
-                oninput="typeButton()"
+                // onInput={typeButton()}
               />
               <div id="close-icon-user" className="close-icon-user">
                 <FontAwesomeIcon icon={faTimes} className="icon" />
@@ -38,11 +56,11 @@ const Login = () => {
             <div className="btn-data">
               <FontAwesomeIcon icon={faLock} className="icon" />
               <input
-                id="close-icon-btn"
-                type="text"
+                id="password"
+                type="password"
                 className="password"
                 placeholder="Contraseña"
-                oninput="typeButton2()"
+                // onInput={typeButton2()}
               />
               <div id="close-icon-password" className="close-icon-password">
                 <FontAwesomeIcon icon={faTimes} className="icon" />
@@ -51,7 +69,7 @@ const Login = () => {
           </div>
 
           <div className="btn-login">
-            <a href="#" className="btn-login">
+            <a href="#" className="btn-login" onClick={dataAuth}>
               Iniciar sesión
             </a>
           </div>

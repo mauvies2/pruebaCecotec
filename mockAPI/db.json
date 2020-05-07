@@ -1,0 +1,21 @@
+{
+  "product_list": [
+    {
+      "id": "1",
+      "name": "lavadora",
+      "price": "259"
+    },
+    {
+      "id": "2",
+      "name": "sd",
+      "price": "adasd"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "user": "admin",
+      "password": "123"
+    }
+  ]
+}

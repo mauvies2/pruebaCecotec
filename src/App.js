@@ -3,29 +3,80 @@ import "./App.scss";
 import ProdList from "./components/ProdList";
 import AddProdForm from "./components/AddProdForm";
 import EditProdForm from "./components/EditProdForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
   const [hasError, setErrors] = useState(false);
-  const [prods, setProds] = useState(false);
+  const [prods, setProds] = useState({});
 
-  useEffect(() =>
-    fetch("http://localhost:3004/product_list")
-      .then((res) => res.json())
-      .then((res) => this.setState({ prods: res }))
-      .catch(() => this.setState({ hasErrors: true }))
-  );
+  async function fetchData() {
+    const res = await fetch("http://localhost:3004/product_list");
+    res
+      .json()
+      .then((res) => setProds(res))
+      .catch((err) => setErrors(err));
+  }
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const postRequest = (prod) => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(prod),
+    };
+    fetch(
+      "http://localhost:3004/product_list",
+      requestOptions
+    ).then((response) => response.json());
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  };
   // Agregamos el nuevo objeto (producto) a la array
   // de objetos previos
+  const updateRequest = (id, prod) => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(prod),
+    };
+    fetch(
+      `http://localhost:3004/product_list/${id}`,
+      requestOptions
+    ).then((response) => response.json());
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  };
+
+  const delRequest = (id) => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch(
+      `http://localhost:3004/product_list/${id}`,
+      requestOptions
+    ).then((response) => response.json());
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  };
 
   const addProd = (prod) => {
     // prod.id = prods.length + 1;
+    postRequest(prod);
     setProds([...prods, prod]);
   };
 
   // Borramos el producto con un filter del
   // resto de id
   const deleteProd = (id) => {
+    delRequest(id);
     setProds(prods.filter((prod) => prod.id !== id));
   };
 
@@ -46,13 +97,25 @@ const App = () => {
 
   const updateProd = (id, updatedProd) => {
     setEditing(false);
-
+    updateRequest(id, updatedProd);
     setProds(prods.map((prod) => (prod.id === id ? updatedProd : prod)));
+  };
+
+  const signOut = () => {
+    localStorage.removeItem("myData");
+    window.location.reload();
   };
 
   return (
     <div className="container">
-      <h1>Inventario de productos</h1>
+      <div className="header-crud">
+        <h1>Inventario de productos</h1>
+        <FontAwesomeIcon
+          icon={faSignOutAlt}
+          className="btn-signout"
+          onClick={signOut}
+        />
+      </div>
       <div className="prod-container">
         <div className="prod-tipo">
           <h3>Id</h3>

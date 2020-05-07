@@ -6,7 +6,7 @@ import Login from "./components/Login";
 
 const authentication = () => {
   const sessionAut = localStorage.getItem("myData");
-  if (sessionAut == false) {
+  if (sessionAut === "true") {
     ReactDOM.render(
       <React.StrictMode>
         <App />

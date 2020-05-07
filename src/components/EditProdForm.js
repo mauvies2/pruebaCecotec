@@ -32,6 +32,7 @@ const EditProdForm = (props) => {
           value={prod.id}
           placeholder="Id..."
           onChange={handleInputChange}
+          disabled
         />
       </div>
       <div className="add-prod">
