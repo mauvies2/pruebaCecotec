@@ -37,7 +37,6 @@ h1 {
 
 .prod-container {
   padding: 1rem 1rem;
-  // height: 150%;
   width: 100%;
   @include flexbox(flex-start, center, column);
   background: white;
