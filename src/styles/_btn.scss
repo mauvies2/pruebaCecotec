@@ -14,7 +14,7 @@ button {
 
 .btn-del {
   color: #8f1616;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
@@ -26,6 +26,12 @@ button {
 .btn-edit {
   // color: white;
   color: map-get($map: $color, $key: link);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.btn-signout {
+  font-size: 2.5rem;
+  color: rgb(144, 0, 0);
+  float: right;
   cursor: pointer;
 }

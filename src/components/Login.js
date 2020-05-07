@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import $ from "jquery";
 
 const Login = () => {
   const [hasError, setErrors] = useState(false);
@@ -24,12 +22,12 @@ const Login = () => {
   const dataAuth = () => {
     const user = document.getElementById("user").value;
     const password = document.getElementById("password").value;
-    for (let user_password of users) {
-      if (user_password.user === user && user_password.password === password) {
+    users.forEach((userPass) => {
+      if (userPass.user === user && userPass.password === password) {
         localStorage.setItem("myData", true);
         window.location.reload();
       }
-    }
+    });
   };
 
   return (
@@ -47,11 +45,7 @@ const Login = () => {
                 type="text"
                 className="user"
                 placeholder="Usuario o correo electrónico"
-                // onInput={typeButton()}
               />
-              <div id="close-icon-user" className="close-icon-user">
-                <FontAwesomeIcon icon={faTimes} className="icon" />
-              </div>
             </div>
             <div className="btn-data">
               <FontAwesomeIcon icon={faLock} className="icon" />
@@ -60,11 +54,7 @@ const Login = () => {
                 type="password"
                 className="password"
                 placeholder="Contraseña"
-                // onInput={typeButton2()}
               />
-              <div id="close-icon-password" className="close-icon-password">
-                <FontAwesomeIcon icon={faTimes} className="icon" />
-              </div>
             </div>
           </div>
 
