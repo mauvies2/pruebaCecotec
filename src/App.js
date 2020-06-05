@@ -23,7 +23,6 @@ const App = () => {
   }, []);
 
   const postRequest = (prod) => {
-    // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -33,13 +32,10 @@ const App = () => {
       "http://localhost:3004/product_list",
       requestOptions
     ).then((response) => response.json());
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   };
   // Agregamos el nuevo objeto (producto) a la array
   // de objetos previos
   const updateRequest = (id, prod) => {
-    // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -49,12 +45,9 @@ const App = () => {
       `http://localhost:3004/product_list/${id}`,
       requestOptions
     ).then((response) => response.json());
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   };
 
   const delRequest = (id) => {
-    // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -63,12 +56,9 @@ const App = () => {
       `http://localhost:3004/product_list/${id}`,
       requestOptions
     ).then((response) => response.json());
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   };
 
   const addProd = (prod) => {
-    // prod.id = prods.length + 1;
     postRequest(prod);
     setProds([...prods, prod]);
   };
@@ -91,7 +81,6 @@ const App = () => {
 
   const editRow = (prod) => {
     setEditing(true);
-
     setCurrentProd({ id: prod.id, name: prod.name, price: prod.price });
   };
 

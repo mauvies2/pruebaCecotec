@@ -16,6 +16,7 @@ const AddProdForm = (props) => {
     // Seteamos los valores del nuevo producto
     setProd({ ...prod, [name]: value });
   };
+
   return (
     <form
       onSubmit={(event) => {
