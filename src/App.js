@@ -7,15 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
-  const [hasError, setErrors] = useState(false);
+  // const [hasError, setErrors] = useState(false);
   const [prods, setProds] = useState({});
 
   async function fetchData() {
     const res = await fetch("http://localhost:3004/product_list");
-    res
-      .json()
-      .then((res) => setProds(res))
-      .catch((err) => setErrors(err));
+    res.json().then((res) => setProds(res));
+    // .catch((err) => setErrors(err));
   }
 
   useEffect(() => {

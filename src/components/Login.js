@@ -4,15 +4,13 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
-  const [hasError, setErrors] = useState(false);
+  // const [hasError, setErrors] = useState(false);
   const [users, setUsers] = useState([]);
 
   async function fetchData() {
-    const res = await fetch("http://localhost:3004/users");
-    res
-      .json()
-      .then((res) => setUsers(res))
-      .catch((err) => setErrors(err));
+    const res = await fetch("https://localhost:3004/users");
+    res.json().then((res) => setUsers(res));
+    // .catch((err) => setErrors(err));
   }
 
   useEffect(() => {
@@ -58,10 +56,8 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="btn-login">
-            <a href="#" className="btn-login" onClick={dataAuth}>
-              Iniciar sesión
-            </a>
+          <div className="btn-login" onClick={dataAuth}>
+            Iniciar sesión
           </div>
 
           <div className="remember-forgot">
@@ -69,9 +65,7 @@ const Login = () => {
               <input type="checkbox" />
               <p>Recuerdame</p>
             </div>
-            <div className="forgot">
-              <a href="#">Olvidó su contraseña?</a>
-            </div>
+            <div className="forgot">Olvidó su contraseña?</div>
           </div>
         </section>
       </div>
